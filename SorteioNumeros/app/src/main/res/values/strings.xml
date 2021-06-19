@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SorteioNumeros</string>
+    <string name="sorteio_numeros">Sorteio de Números</string>
+    <string name="sortear">Sortear</string>
+</resources>
