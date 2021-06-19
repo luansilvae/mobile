@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun SortearNumero(view: View){
+    fun SortearNumero(view: View) {
         var texto = findViewById(R.id.txtNumero) as TextView
 
         var numeroSorteado = Random().nextInt(11)
