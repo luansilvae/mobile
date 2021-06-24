@@ -1,0 +1,2 @@
+com/luan/aula03_tabuada/BuildConfig.java
+ com.luan.aula03_tabuada.BuildConfig
