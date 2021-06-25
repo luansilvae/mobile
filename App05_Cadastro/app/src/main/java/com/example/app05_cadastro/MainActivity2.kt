@@ -23,6 +23,7 @@ class MainActivity2 : AppCompatActivity() {
         Toast.makeText(this, usuario.nome, Toast.LENGTH_LONG).show()
     }
 
-    companion object{
+    companion object {
         val listaUsuario = mutableListOf<Usuario>()
     }
+}
