@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var idade: EditText
     private lateinit var botaoSalvar: Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
