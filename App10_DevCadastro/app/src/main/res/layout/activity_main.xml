@@ -6,12 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/rvUsuarios"
-            tools:listitem="">
+            tools:listitem="@layout/item_usuario">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -22,6 +21,6 @@
             android:id="@+id/btnIncluir"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="84dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="72dp"/>
+            android:layout_marginEnd="72dp" android:layout_marginRight="72dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
