@@ -1,4 +1,4 @@
-package com.example.app10_devcadastro
+package com.luan.app10_devcadastro
 
 import org.junit.Test
 

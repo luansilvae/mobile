@@ -1,17 +1,17 @@
-package com.example.app10_devcadastro
+package com.luan.app10_devcadastro
 
 import android.content.Intent
 import android.graphics.Bitmap
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 
 class CadastroActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-    lateinit var especialidade: Especialidade
-    lateinit var nivel: Nivel
-    lateinit var spnNivel: Spinner
+    lateinit var stack: Stack
+    lateinit var senioridade: Senioridade
+    lateinit var spnSenioridade: Spinner
     lateinit var edtNome: EditText
     lateinit var edtEmail: EditText
     lateinit var btnSalvar: Button
@@ -21,15 +21,16 @@ class CadastroActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dev_cadastro)
+        setContentView(R.layout.activity_cadastro)
 
         edtNome = findViewById(R.id.edtNome)
         edtEmail = findViewById(R.id.edtEmail)
-        spnNivel = findViewById(R.id.spnNivel)
+        spnSenioridade = findViewById(R.id.spnSenioridade)
         btnSalvar = findViewById(R.id.btnSalvar)
         imvFoto = findViewById(R.id.imvFoto)
         swtEmpregado = findViewById(R.id.swtEmpregado)
 
+        // Intent para chamar a Câmera
         imvFoto.setOnClickListener(){
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
@@ -37,15 +38,16 @@ class CadastroActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 startActivityForResult(intent, RC_CAMERA)
         }
 
+        // Aqui estamos implementando o "Adapter" do Spinner (Combo), consumindo o array no arquivo strings.xml
         ArrayAdapter.createFromResource(this, R.array.opcoes_spinner, android.R.layout.simple_spinner_item).also { arrayAdapter ->
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spnNivel.adapter = arrayAdapter
+            spnSenioridade.adapter = arrayAdapter
         }
 
-        spnNivel.onItemSelectedListener = this
+        spnSenioridade.onItemSelectedListener = this
 
         btnSalvar.setOnClickListener(){
-            val usuario = Dev(fotoTirada, edtNome.text.toString(), edtEmail.text.toString(), especialidade, nivel, swtEmpregado.isChecked)
+            val usuario = Usuario(fotoTirada, edtNome.text.toString(), edtEmail.text.toString(), stack, senioridade, swtEmpregado.isChecked)
             MainActivity.lista.add(usuario)
             finish()
         }
@@ -56,18 +58,18 @@ class CadastroActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             var checked = view.isChecked
 
             when (view.id){
-                R.id.rdbFrontEnd -> { if (checked) {especialidade = Especialidade.FRONTEND}}
-                R.id.rdbBackEnd -> { if (checked) {especialidade = Especialidade.BACKEND}}
-                R.id.rdbFullStack -> { if (checked) {especialidade = Especialidade.FULLSTACK}}
+                R.id.rdbFrontEnd -> { if (checked) {stack = Stack.FRONTEND}}
+                R.id.rdbBackEnd -> { if (checked) {stack = Stack.BACKEND}}
+                R.id.rdbFullStack -> { if (checked) {stack = Stack.FULLSTACK}}
             }
         }
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         when (p2){
-            0 -> {nivel = Nivel.JUNIOR}
-            1 -> {nivel = Nivel.PLENO}
-            2 -> {nivel = Nivel.SENIOR}
+            0 -> {senioridade = Senioridade.JUNIOR}
+            1 -> {senioridade = Senioridade.PLENO}
+            2 -> {senioridade = Senioridade.SENIOR}
         }
     }
 
