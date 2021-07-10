@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">App20_GithubAPI</string>
+    <string name="edtHintLogin"/>
+</resources>
